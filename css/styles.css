@@ -1,0 +1,32 @@
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* NAV STYLES */
+
+.hdrlogo {
+    max-height: 80px;
+}
+
+nav {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;   
+ align-items: flex-end;
+ margin: 2rem;
+}
+
+nav ul {
+    margin: 0;
+}
+
+nav ul li {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  list-style-type: none;
+}
+
