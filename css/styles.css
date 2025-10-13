@@ -30,3 +30,19 @@ nav ul li {
   list-style-type: none;
 }
 
+.hero {
+    height: 80vh;
+}
+
+
+/* PROJECTS */
+
+.prjctstitles {
+    display: flex;
+    flex-direction: row;
+}
+
+.prjctstitle {
+    display: flex;
+    flex-direction: row;
+}
