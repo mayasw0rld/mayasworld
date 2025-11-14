@@ -8,23 +8,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <img class="hdrlogo" src="images/logo_black.png" alt="Maya's World Logo">
+            <img class="hdrlogo" src="images/logo_white.png" alt="Maya's World Logo">
             <ul>
-                <li>PROJECTS</li>
-                <li>ABOUT ME</li>
-                <li>CONTACT ME</li>
-                <li>BONUS MEDIA</li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#aboutme">ABOUT ME</a></li>
+                <li><a href="#contact">CONTACT ME</a></li>
+               <li> <a href="">BONUS MEDIA</a></li>
             </ul>
         </nav>
     </header>
         <section class="hero">
-            
         </section>
-        <section class="projects">
+        <section class="projects" id="projects">
             <div class="prjctstitles">
                 <div class="prjctstitle">
                 <h2>Selected <i>Projects</i></h2>
@@ -51,7 +53,102 @@
                 <img src="images/star.png" alt="Decorative Star">
                 </div>
             </div>
+<div class="container">
+  <a href="#" class="col left tile">Citizencentric</a>
+
+  <div class="col middle">
+    <a href="#" class="tile">The Plant App</a>
+    <a href="#" class="tile">Pop Therapy</a>
+  </div>
+
+  <div class="col right">
+    <a href="#" class="tile large">Page 4</a>
+    <a href="#" class="tile small">Page 5</a>
+  </div>
+</div>
         </section>
-    <footer></footer>
+        <section class="aboutme" id="aboutme">
+            <div class="aboutimg">
+                <img src="images/me.png" alt="">
+            </div>
+            <div class="abouttext">
+                <h2>ABOUT ME</h2>
+                <p>
+                Hi! My name is Maya. I recently graduated from the Interactive Media Design program at Algonquin College in Ottawa, Canada. Although, my creative journey began much before I started college. I grew up in Downtown Ottawa, always leaning towards making art or playing sports instead of playing with toys. As I got older, I took interest in marketing- but specifically how visuals can attract different people and alter their experience with people and organizations alike.</p>
+                <p>
+                I offer services including graphic design and branding, web design and development, and photography and illustration. I ensure thorough communication, flexibility and passion. </p>
+                
+                <p>Have an idea you want to bring to life, reach out to me at maya@mayasworld.ca or fill out the contact form below.
+                </p>
+                <button><span>Résumé</span></button>
+            </div>
+            <div class="aboutarrow">
+                <img src="images/arrow.png" alt="">
+            </div>
+        </section>
+        <section class="contact" id="contact">
+  <div class="contact-left">
+    <h2>LET’S <i>CHAT</i></h2>
+    <form>
+      <label>{your name}</label>
+      <input type="text" name="name" />
+
+      <label>{your email}</label>
+      <input type="email" name="email" />
+
+      <label>{your message}</label>
+      <textarea name="message"></textarea>
+
+      <button type="submit"><span>Submit</span></button>
+    </form>
+  </div>
+
+  <div class="contact-right">
+    <div class="info-top">
+      <div class="left-info">
+        <p>613 720 5579</p>
+        <p>maya@mayasworld.ca</p>
+      </div>
+      <div class="right-info">
+        <a href="https://www.linkedin.com/in/maya-querido-194001239/"><p><img class="icon" src="images/linkedin_icon.png" alt="">mayaquerido</p></a>
+        <a href="https://www.instagram.com/mayasworld.ca/"><p><img class="icon" src="images/insta_icon.png" alt="">mayasworld.ca</p></a>
+      </div>
+    </div>
+
+    <div class="contact-image">
+      <img src="images/mecamera.jpg" alt="Maya holding a camera" />
+    </div>
+  </div>
+        </section>
+
+<footer class="footer">
+  <div class="footer-img">
+    <img src="images/mtlpic.jpg" alt="Scenic photo">
+  </div>
+
+  <div class="footer-nav">
+    <ul>
+      <li><a href="#top">BACK TO TOP</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#aboutme">ABOUT ME</a></li>
+      <li><a href="#bonus">BONUS MEDIA</a></li>
+      <li><a href="#morebonus">EVEN MORE BONUS MEDIA</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-logo">
+    <img src="images/logo_white.png" alt="Logo">
+  </div>
+
+  <div class="footer-credit">
+    <p>Designed & developed by Maya Querido.</p>
+    <p>2025 © Maya’s World</p>
+  </div>
+
+  <div class="footer-contact">
+    <h1>Contact Me</h1>
+  </div>
+</footer>
+<script src="js/coolstuff.js"></script>
 </body>
 </html>
