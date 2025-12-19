@@ -32,18 +32,62 @@ window.addEventListener("scroll", () => {
 // TILES
 document.addEventListener('DOMContentLoaded', () => {
   const tiles = document.querySelectorAll('.tile');
-  console.log('Tiles found:', tiles.length);
+  
+  const observerOptions = {
+    root: null, // use the viewport
+    rootMargin: '0px 0px -50px 0px', // triggers 50px before the element enters the bottom
+    threshold: 0.1 // lower threshold is more reliable for large items
+  };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      console.log('Intersecting:', entry.target, entry.isIntersecting);
       if (entry.isIntersecting) {
         entry.target.classList.add('show');
+        // Optional: stop observing once it has shown
+        observer.unobserve(entry.target); 
       }
     });
-  }, {
-    threshold: 0.2
-  });
+  }, observerOptions);
 
   tiles.forEach(tile => observer.observe(tile));
+});
+
+// FOOTER
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. BUTTON INK SPREAD
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(btn => {
+        btn.addEventListener("mousemove", e => {
+            const rect = btn.getBoundingClientRect();
+            btn.style.setProperty("--x", `${e.clientX - rect.left}px`);
+            btn.style.setProperty("--y", `${e.clientY - rect.top}px`);
+        });
+    });
+
+    // 2. FOOTER REVEAL LOGIC
+    const wrapper = document.querySelector('.reveal-wrapper');
+    const footer = document.querySelector('.footer');
+
+    const handleFooterReveal = () => {
+        if (!wrapper || !footer) return;
+
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Progress goes from 0 to 1 as we scroll past the contact section
+        // wrapperRect.top will be 0 when we reach contact, and -windowHeight when finished
+        let progress = Math.abs(wrapperRect.top) / windowHeight;
+        
+        // Only start calculating when contact section is pinned (top <= 0)
+        if (wrapperRect.top <= 0) {
+            progress = Math.min(Math.max(progress, 0), 1);
+            footer.style.transform = `translateY(${(1 - progress) * 100}%)`;
+            footer.style.visibility = 'visible';
+        } else {
+            footer.style.transform = `translateY(100%)`;
+            footer.style.visibility = 'hidden';
+        }
+    };
+
+    window.addEventListener('scroll', handleFooterReveal);
 });
