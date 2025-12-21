@@ -1,3 +1,59 @@
+#construction-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 13, 13, 0.7); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color:#0D0D0D;
+    padding: 2rem;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* Class to trigger the reveal */
+#construction-overlay.hide-overlay {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    pointer-events: none;
+}
+
+.overlay-content {
+    max-width: 500px;
+    padding: 3rem;
+    background-color: #F2F2F2; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: center;
+}
+
+#close-overlay {
+    background: #EF92D0;
+    color: #F2F2F2;
+    border: none;
+    padding: 12px 35px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+#close-overlay::before {
+    z-index: -1; /* Stays behind text */
+}
+
+#close-overlay:hover {
+    transform: scale(1.04);
+    color: #F2F2F2;
+}
 
 /* GLOBAL STYLES */
 html, body {
@@ -94,12 +150,11 @@ button span {
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin: 2rem;
+  align-items: center;
+  margin: 2rem 2.5rem 2rem 2.5rem;
   position: absolute;
   top: 0;
-  left: 0;
-  width: calc(100% - 4rem);
+  width: calc(100% - 5rem);
   z-index: 2;
 }
 
@@ -130,8 +185,9 @@ nav ul li a {
 }
 
 nav ul li a::after {
-  content: url('../images/arrow.svg');
+  content: url('../images/whitearrow.svg');
   position: absolute;
+
   right: -2rem;
   top: 50%;
   transform: translateY(-50%);
@@ -183,7 +239,6 @@ nav ul li a:focus {
   gap: 4rem;
   animation: scrollTitles 30s linear infinite;
   width: max-content;
-  padding-bottom: 2rem;
 }
 
 .prjctstitle {
@@ -204,7 +259,7 @@ nav ul li a:focus {
   display: flex;
   height: 80vh;
   align-items: stretch;
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 0 1.5rem;
   box-sizing: border-box;
 }
@@ -213,7 +268,7 @@ nav ul li a:focus {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .col.left { flex: 2; }
@@ -342,6 +397,8 @@ nav ul li a:focus {
 
 /* ABOUT ME SECTION */
 .aboutme {
+  background-color: #0D0D0D;
+  color: #F2F2F2;
   display: flex;
   flex-direction: row;
   align-items: flex-start; /* Keeps arrow aligned with the top of the content */
@@ -349,6 +406,7 @@ nav ul li a:focus {
   width: 100%;
   padding: 5rem 4rem;
   box-sizing: border-box;
+  margin-top: 2rem;
 }
 
 /* NEW: This div holds your image and text together */
@@ -405,6 +463,44 @@ nav ul li a:focus {
   height: auto;
 }
 
+.resume {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem; /* Slightly wider for form submission */
+  border: 1px solid #F2F2F2; /* White border */
+  background-color: transparent;
+  color: #F2F2F2; /* White text */
+  cursor: pointer;
+  transition: color 0.4s ease;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.resume::before {
+  content: "";
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: #F2F2F2; /* White ink spread */
+  border-radius: 50%;
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1; /* Behind the span text */
+}
+
+resume:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.resume:hover {
+  color: #0D0D0D; /* Black text on hover */
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 1100px) {
   .about-content-group {
@@ -432,32 +528,32 @@ nav ul li a:focus {
 
 /* CONTACT SECTION */
 .contact {
-  margin: 0 auto 4rem auto;
-  background-color: #0D0D0D;
+  width: 100%;
+  margin: 0; 
+  padding: 8rem 0;
+}
+
+.contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1000px;
-  padding: 4rem 6.1rem;
-  color: #F2F2F2;
+  gap: 4rem;
+  max-width: 1000px; /* Limits content width */
+  margin: 0 auto;    /* Centers the grid within the black bar */
+  padding: 0 6.1rem; /* Maintains your original internal spacing */
 }
 
 .contact-left h2 {
   padding-bottom: 20px;
-  color:#F2F2F2
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-
-  color:#F2F2F2
 }
 
 label {
   font-size: 0.9rem;
-  color:#F2F2F2
 }
 
 input, textarea {
@@ -483,42 +579,6 @@ button[type="submit"] {
 }
 
 /* INVERSE BUTTON FOR BLACK BACKGROUND FORMS */
-form button {
-  position: relative;
-  overflow: hidden;
-  border-radius: 50px;
-  padding: 0.5rem 1.5rem; /* Slightly wider for form submission */
-  border: 1px solid #F2F2F2; /* White border */
-  background-color: transparent;
-  color: #F2F2F2; /* White text */
-  cursor: pointer;
-  transition: color 0.4s ease;
-  z-index: 1;
-  margin-top: 10px;
-}
-
-form button::before {
-  content: "";
-  position: absolute;
-  top: var(--y);
-  left: var(--x);
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background: #F2F2F2; /* White ink spread */
-  border-radius: 50%;
-  transition: width 0.6s ease, height 0.6s ease;
-  z-index: -1; /* Behind the span text */
-}
-
-form button:hover::before {
-  width: 300%;
-  height: 300%;
-}
-
-form button:hover {
-  color: #0D0D0D; /* Black text on hover */
-}
 
 form button span {
   position: relative;
@@ -531,7 +591,6 @@ form button span {
   gap: 0.5rem;
   align-items: end;
   margin-left: 3rem;
-  color:#F2F2F2
 }
 
 .info-top {
@@ -542,14 +601,20 @@ form button span {
 
 .left-info p, .right-info p {
   margin: 0.2rem 0;
-  font-size: 0.95rem;
-  color:#F2F2F2
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
+.right-info a {
+  text-decoration: none;
+  color: #0D0D0D;
+}
+
+/* You can now remove the margin-right from .icon since 'gap' handles it */
 .icon {
   width: 14px;
   height: 14px;
-  margin-right: 0.3rem;
   vertical-align: middle;
 }
 
@@ -566,16 +631,16 @@ form button span {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
-  background-color: #f4a3d8;
+  background-color: #0D0D0D;
   color: #F2F2F2;
-  padding: 8rem 0 2rem;
+  padding: 5rem 0 0 0;
 }
 
 .footer-img {
   grid-column: 1 / 2;
   grid-row: 1 / 4;
   height: 80%;
-  padding: 0 0 2rem 3rem;
+  padding: 0 0 0rem 3rem;
 }
 
 .footer-img img {
@@ -612,7 +677,7 @@ form button span {
 }
 
 .footer-logo img {
-  width: 80px;
+  width: 100px;
   padding-right: 2rem;
 }
 
@@ -620,17 +685,17 @@ form button span {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   font-size: 0.9rem;
-  color: #0D0D0D;
+  color: #EF92D0;
   padding-left: 2rem;
 }
 
-.footer-credit p:last-child { color: #F2F2F2; }
+.footer-credit p:last-child { color: #857a7a; }
 
 .footer-contact {
   grid-column: 1 / 4;
   grid-row: 3 / 4;
   justify-self: end;
-  align-self: end;
+  align-self: start;
 }
 
 .footer-contact h1 {
@@ -638,14 +703,18 @@ form button span {
   font-size: 20rem;
   font-weight: 400;
   color: #F2F2F2;
-  margin: 0 0 6rem 0;
   line-height: 1;
   padding-right: 6rem;
   transition: color 0.3s ease-in-out;
+  margin: 0;
+}
+
+.footer-contact a {
+  text-decoration: none;
 }
 
 .footer-contact h1:hover {
-  color: #0D0D0D;
+  color: #EF92D0;
 }
 
 /* ANIMATIONS */
@@ -679,9 +748,7 @@ form button span {
   .right-info { text-align: left; }
 }
 
-
 /* CITIZENCENTRIC PAGE */
-
 .banner {
     display: flex;
     align-items: center; 
@@ -690,6 +757,96 @@ form button span {
     min-height: 500px; 
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.banner-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stacks the slider and the text vertically */
+    justify-content: center;
+    align-items: center; /* Centers both items */
+}
+.comparison-container {
+    position: relative;
+    width: 70%; 
+    max-width: 500px; 
+    height: 80vh; 
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden; /* Keeps images inside the rounded corners */
+}
+
+.image-before, .image-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top;
+    border-radius: 20px; 
+}
+
+.image-after-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    
+    /* This makes the 'After' image reveal from left to right */
+    /* As the slider moves to 100, more of the 'After' image is shown */
+    clip-path: inset(0 calc(100% - var(--percent, 100%)) 0 0);
+    -webkit-clip-path: inset(0 calc(100% - var(--percent, 100%)) 0 0);
+}
+
+.slider {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    margin: 0;
+    cursor: ew-resize;
+    z-index: 20;
+}
+
+/* The White Dot for Chrome, Safari, Edge, and Opera */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    /* Adjust this to move the dot up or down within the 100% height container */
+    margin-top: 20vh; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* The White Dot for Firefox */
+.slider::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+.slider-prompt {
+  font-family: "Inter", sans-serif;
+    margin-top: 20px; 
+    width: 100%;
+    text-align: center;
+    color: #F2F2F2;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .blurb, .banner-img {
@@ -708,13 +865,14 @@ form button span {
   padding: 4rem 0;
 }
 
-.banner-img{
+.banner-img {
   background-color: #0D0D0D;
   width: 100%;   
   height: 100vh;  
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 /* Main Section Container */
 .step1 {
     display: flex;
@@ -848,5 +1006,173 @@ figcaption {
     .results-content {
         width: 100%;
         padding: 0 1rem;
+    }
+}
+
+/* PLANT APP PAGE */
+
+/* Container Setup */
+.plantprocess {
+  width: 90%; 
+  max-width: 1600px; /* High limit so it doesn't get too stretched on huge monitors */
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* 1. Header Styling */
+.plantprocess-h2 h2 {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* 2. Side-by-Side Text Columns */
+.plantprocess-columns-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  column-gap: 120px; 
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.plantprocess-text ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.plantprocess-text li {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* 3. Staggered Image Grid */
+.plantprocess-imgs {
+  display: grid;
+  /* Visual weight adjustment: makes the side columns slightly smaller than middle */
+  grid-template-columns: 1fr 1.1fr 0.9fr; 
+  gap: 30px;
+  align-items: start;
+}
+
+/* Vertically stack images */
+.plantprocess-imgs-left, 
+.plantprocess-imgs-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.plantprocess-imgs img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .plantprocess-columns-wrapper {
+    column-gap: 40px; /* Shrink gap on smaller screens before stacking */
+  }
+}
+
+@media (max-width: 768px) {
+  .plantprocess-columns-wrapper,
+  .plantprocess-imgs {
+    grid-template-columns: 1fr;
+  }
+  .plantprocess-h2 h2 {
+    font-size: 2rem;
+  }
+}
+
+/* User Testing Section - Full Width *//* User Testing Section - Full Width */
+.plant-usertesting {
+    background-color: #142020;
+    width: 100%;             
+    margin: 4rem 0 2rem;          
+    padding: 80px 5%;        
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    column-gap: 60px; 
+    align-items: end; 
+    border-radius: 0;        
+    box-sizing: border-box;  
+}
+
+/* Left Column Content */
+.ut-left {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    justify-content: flex-end; 
+}
+
+.ut-left h2 {
+    color: #F2F2F2;          
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;   
+}
+
+/* MATCHED LIST STYLES: This ensures User Testing matches The Process exactly */
+.ut-left ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 16px;       /* Matches .plantprocess-text ul */
+    margin-bottom: 24px;    /* Matches .plantprocess-text ul margin-bottom */
+}
+
+.ut-left li {
+    color: #F2F2F2;
+    line-height: 1.6;       /* Matches .plantprocess-text li */
+    margin-bottom: 1.5rem;  /* Matches the spacing you have in The Process */
+}
+
+/* 4 Heatmaps Side-by-Side */
+.heatmaps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px;                             
+    width: 100%;
+}
+
+/* Right Column Content */
+.ut-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;               
+}
+
+/* Universal Image Styling */
+.plant-usertesting img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px; 
+}
+
+.plant-usertesting figcaption {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+    font-style: italic;           
+    color: #F2F2F2;
+}
+
+/* Responsive: Adjusting for tablet and mobile */
+@media (max-width: 1024px) {
+    .plant-usertesting {
+        grid-template-columns: 1fr; 
+        align-items: start; 
+        padding: 60px 5%;
+    }
+    
+    .ut-left {
+        justify-content: flex-start;
+    }
+
+    .ut-right {
+        margin-top: 50px; 
     }
 }
