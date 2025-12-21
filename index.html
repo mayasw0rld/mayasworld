@@ -15,7 +15,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.html"><img class="hdrlogo" src="images/logo_white.png" alt="Maya's World Logo"></a>
+            <a href="index.html"><img class="hdrlogo" src="images/logo_pink.png" alt="Maya's World Logo"></a>
             <ul>
                 <li><a href="#projects">PROJECTS</a></li>
                 <li><a href="#aboutme">ABOUT ME</a></li>
@@ -24,6 +24,17 @@
             </ul>
         </nav>
     </header>
+
+    <div id="construction-overlay">
+    <div class="overlay-content">
+        <h2>Welcome to Maya's World</h2>
+        <p>My portfolio is currently a work in progress. Mobile styles, project pages, and some details are still being polished.
+        Thank you for your understanding. <br>
+      - Maya</p>
+        <button id="close-overlay">Enter Site</button>
+    </div>
+</div>
+    
         <section class="hero">
         </section>
 
@@ -126,7 +137,7 @@
 <section class="aboutme" id="aboutme">
     <div class="about-content-group">
         <div class="aboutimg">
-            <img src="images/me.png" alt="Maya">
+            <img src="images/mesmile.jpg" alt="Maya">
         </div>
         <div class="abouttext">
             <h2>ABOUT ME</h2>
@@ -135,7 +146,7 @@
             <p>I offer services including graphic design and branding, web design and development, and photography and illustration. I ensure thorough communication, flexibility and passion.</p>
 
             <p>Have an idea you want to bring to life, reach out to me at maya@mayasworld.ca or fill out the contact form below.</p>
-            <button><span>Résumé</span></button>
+            <button class="resume"><span>Résumé</span></button>
         </div>
     </div>
 
@@ -144,45 +155,51 @@
     </div>
 </section>
 
+<section class="contact" id="contact">
+  <div class="contact-container">
+    
+    <div class="contact-left">
+      <h2>LET’S CHAT</h2>
+      <form>
+        <label>[your name]</label>
+        <input type="text" name="name"/>
 
-        <section class="contact" id="contact">
-  <div class="contact-left">
-    <h2>LET’S CHAT</h2>
-    <form>
-      <label>[your name]</label>
-      <input type="text" name="name"/>
+        <label>[your email]</label>
+        <input type="email" name="email"/>
 
-      <label>[your email]</label>
-      <input type="email" name="email"/>
+        <label>[your message]</label>
+        <textarea name="message"></textarea>
 
-      <label>[your message]</label>
-      <textarea name="message"></textarea>
+        <button type="submit"><span>Submit</span></button>
+      </form>
+    </div>
 
-      <button type="submit"><span>Submit</span></button>
-    </form>
-  </div>
-
-  <div class="contact-right">
-    <div class="info-top">
-      <div class="left-info">
-        <p>613 720 5579</p>
-        <p>maya@mayasworld.ca</p>
+    <div class="contact-right">
+      <div class="info-top">
+        <div class="left-info">
+          <p>613 720 5579</p>
+          <p>maya@mayasworld.ca</p>
+        </div>
+        <div class="right-info">
+          <a href="https://www.linkedin.com/in/maya-querido-194001239/">
+            <p><img class="icon" src="images/linkedin_icon.png" alt="">mayaquerido</p>
+          </a>
+          <a href="https://www.instagram.com/mayasworld.ca/">
+            <p><img class="icon" src="images/insta_icon.png" alt="">mayasworld.ca</p>
+          </a>
+        </div>
       </div>
-      <div class="right-info">
-        <a href="https://www.linkedin.com/in/maya-querido-194001239/"><p><img class="icon" src="images/linkedin_icon.png" alt="">mayaquerido</p></a>
-        <a href="https://www.instagram.com/mayasworld.ca/"><p><img class="icon" src="images/insta_icon.png" alt="">mayasworld.ca</p></a>
+
+      <div class="contact-image">
+        <img src="images/mecamera.jpg" alt="Maya holding a camera" />
       </div>
     </div>
 
-    <div class="contact-image">
-      <img src="images/mecamera.jpg" alt="Maya holding a camera" />
-    </div>
-  </div>
-        </section>
+  </div> </section>
 
 <footer class="footer">
   <div class="footer-img">
-    <img src="images/mtlpic.jpg" alt="Scenic photo">
+    <img src="images/mework.jpg" alt="Scenic photo">
   </div>
 
   <div class="footer-nav">
@@ -196,7 +213,7 @@
   </div>
 
   <div class="footer-logo">
-    <img src="images/logo_white.png" alt="Logo">
+    <img src="images/logo_pink.png" alt="Logo">
   </div>
 
   <div class="footer-credit">
@@ -205,7 +222,7 @@
   </div>
 
   <div class="footer-contact">
-    <h1>Contact Me</h1>
+    <a href="#contact"><h1>Contact Me</h1></a>
   </div>
 </footer>
 
