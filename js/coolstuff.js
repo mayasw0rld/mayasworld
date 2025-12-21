@@ -91,3 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', handleFooterReveal);
 });
+
+
+// Slider 
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('compare-slider');
+    const container = document.querySelector('.comparison-container');
+
+    // Initialize at 100% to show the New Image fully
+    container.style.setProperty('--percent', '100%');
+
+    slider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        container.style.setProperty('--percent', value + '%');
+    });
+});
+
+// Overlay for Under Construction Notice
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('construction-overlay');
+    const closeBtn = document.getElementById('close-overlay');
+
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.add('hide-overlay');
+    });
+});
